@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# Fearch Console
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Enterprise-grade API management dashboard for the Fearch search and scrape platform.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Real-time API Usage Tracking** — Monitor request counts, key usage, and billing tiers
+- **API Key Management** — Create, revoke, and monitor API keys
+- **Interactive Playground** — Test search, scrape, and crawl endpoints
+- **Dark/Light Mode** — Full theme support with system preference detection
+- **Responsive Design** — Works on desktop, tablet, and mobile
+- **Keyboard Shortcuts** — Power-user friendly (⌘K search, ⌘R refresh, ⌘N new key)
+- **Offline Detection** — Shows connection status and handles gracefully
+- **Export Functionality** — Export usage data as JSON
+- **Toast Notifications** — Real-time feedback for all actions
+- **Auto-refresh** — Data refreshes every 30 seconds automatically
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite (fast dev/build)
+- Tailwind CSS
+- Framer Motion (animations)
+- Lucide React (icons)
+- Clerk (authentication)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start development server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
+VITE_FEARCH_ADMIN_SECRET=your_admin_secret
 ```
+
+## API Integration
+
+The dashboard connects to the Fearch API at `https://search.frenix.sh/v1`:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/v1/search` | POST | Web search |
+| `/v1/scrape` | POST | URL scraping |
+| `/v1/keys/create` | POST | Create API key (admin) |
+| `/v1/keys` | GET | List API keys (admin) |
+| `/v1/user/usage` | GET | Get user usage |
+| `/v1/billing` | GET/POST | Billing management |
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| ⌘K | Focus search |
+| ⌘R | Refresh data |
+| ⌘N | Create new key |
+| 1-4 | Switch tabs |
+
+## License
+
+MIT

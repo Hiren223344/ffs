@@ -1,13 +1,15 @@
 {
-  "name": "serene-fermi",
+  "name": "fearch-console",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Enterprise-grade API management dashboard for Fearch",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@clerk/clerk-js": "^6.13.0",
